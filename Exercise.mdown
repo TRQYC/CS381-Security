@@ -1,0 +1,15 @@
+# CS381 Exercise 1 
+**Name**: Zhang Yupeng
+**Student ID**: 5130309468
+
+**1. What is the main reason that information security is different from other research subjects？**
+    Information security studies how to make adversary hard to break; Others study how make a system easy to use efficiently. They have different object and tools.
+
+
+**2. My computer is installed with firewall and anti-virus software.**
+    **a)  Firewall provides which security services (confidentiality, authenticity, integrity, non-repudiation, access-control)?**
+        Firewall provides confidentiality, authentication and  access control.
+    **b)  Anti-virus provides which security services (confidentiality, authenticity, integrity, non-repudiation, access-control)?**
+        Anti-virus provides confidentiality, data intergrity and access control.
+    **c)  If my computer is armed with all these 5 services, is it secure?**
+        If a computer is armed with all these 5 services, it is not absolutely secure because the adversary's ability can be very strong to destory security service. Furthermore, the adversary can also trick and mislead the user to get the information he needed. 

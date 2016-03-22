@@ -1,0 +1,93 @@
+## Chapter2: Homework
+**Name:** Zhang Yupeng
+**Student ID:** 5130309468
+
+
+### Exercise 2.3.1: 
+In this exercise we introduce one of our running examples of a relational database schema. The database schema consists of four relations, whose schemas are:
+   　 Product(maker, model, type)
+   　 PC(model, speed, ram, hd, price)
+   　 Laptop(model, speed, ram, hd, screen, price)
+   　 Printer(model, color, type, price)
+The Product relation gives the manufacturer, model number and type (PC, laptop, or printer) of various products. We assume for convenience that model numbers are unique over all manufacturers and product types; that assumption is not realistic, and a real database would include a code for the manufacturer as part of the model number. The PC relation gives for each model number that is a PC, the speed (of the processor, in gigahertz), the amount of RAM (in megabytes), the size of the hard disk (in gigabytes), and the price. The Laptop relation is similar, except that the screen size (inches) is also included. The Printer relation records for each printer model, whether the printer produces color output (true, if so), the process type (laser or ink-jet, typically), and the price.
+    Write the following declarations:
+**a)  A suitable schema for relation Product.**
+```SQL
+CREATE TABLE Product (
+    maker VARCHAR(30),
+    model INT, PRIMARY KEY
+    type VARCHAR(30)
+) ;
+```
+
+**b)  A suitable schema for relation PC.**
+```SQL
+CREATE TABLE PC (
+    model INT, PRIMARY KEY
+    speed FLOAT, 
+    ram FLOAT
+    hd FLOAT,
+    price INT
+) ;
+```
+
+**c)  A suitable schema for relation Laptop.**
+```SQL
+CREATE TABLE Laptop (
+    model INT, PRIMARY KEY
+    speed FLOAT,
+    ram FLOAT
+    hd FLOAT,
+    screen FLOAT,
+    price INT
+) ;
+```
+
+**d)  A suitable schema for relation Printer.**
+```SQL
+CREATE TABLE Printer (
+    model INT, PRIMARY KEY
+    color BOOLEAN, 
+    type VARCHAR(30),
+    price INT
+) ;
+```
+
+**e)  An alteration to your Printer schema from (d) to delete the attribute color.**
+```SQL
+ALTER TABLE Printer DROP color;
+```
+
+**f)  An alteration to your Laptop schema from (c) to add the attribute od (optical-disk type, e.t., cd or dvd). Let the default value for this attribute to be ’none’ if the laptop does not have an optical disk.**
+```SQL
+AFTER TABLE Laptop ADD od VARCHAR(30) DEFAULT ‘none’;
+```
+
+### Exercise 2.4.1: 
+This exercise builds upon the products schema of Exercise 2.3.2. Recall that the database schema consists of four relations, whose schemas are:
+   　 Product(maker, model, type)
+   　 PC(model, speed, ram, hd, price)
+   　 Laptop(model, speed, ram, hd, screen, price)
+   　 Printer(model, color, type, price)
+    Some sample data for the relation Product is shown in Fig. 2.20. Sample data for the other three relations is shown in Fig. 2.21. Manufacturers and model numbers have been “sanitized”, but the data is typical of products on sale at the beginning of 2007.
+    Write expressions of relational algebra to answer the following queries. You may use the linear notation of Section 2.4.13 if you wish. For the data of Figs, 2.20 and 2.21, show the result of your query. However, your answer should work for arbitrary data, not just the data of these figures.
+**a)  What PC models have a speed of at least 3.00?**
+$$R:=\pi\_{model}　(\sigma\_{speed \geq 3.00}(PC)) $$
+
+**f)  Find those hard-disk sizes that occur in two or more PC’s.**
+$$R:=\pi\_{hd}( \sigma\_{model1 \neq model } (PC \bowtie  \rho\_{(model1,hd)}(\pi\_{(model,hd)}(PC))))$$
+**h) Find those manufacturers of at least two different computers (PC’s or laptops) with speeds of at least 2.80.**
+$$R:=\pi\_{(model,speed)}(PC) \cup \pi\_{(model,speed)}(Laptop)$$
+$$S:=\sigma\_{speed \geq 2.80}(R)$$
+$$T:= S \bowtie Product $$
+$$U:=\pi\_{maker} (\sigma\_{model \neq model1}((\rho\_{(maker,model1)}(T) \bowtie T))) $$
+
+###  Exercise 2.5.1: 
+Express the following constraints about the relations of Exercise 2.3.1, reproduced here:
+　Product(maker, model, type)
+　PC(model, speed, ram, hd, price)
+　Laptop(model, speed, ram, hd, screen, price)
+　Printer(model, color, type, price)
+ You may write your constraints either as containments or by equating an expression to the empty set. For the data of Exercise 2.4.1, indicate any violation to your constraints.
+**b)  A laptop with a screen size less than 15.4 inches must have at least a 100 gigabyte hard disk or sell for less than $1000.**
+$$\sigma\_{(screen < 15.4)}(Laptop) \subseteq \sigma\_{(hd \geq 100)}(Laptop) \cup \sigma\_{(price < 1000)}(Laptop) $$
