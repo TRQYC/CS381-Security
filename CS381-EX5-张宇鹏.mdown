@@ -4,11 +4,13 @@
 
 **Student ID**: 5130309468
 
-**1. Prove the low-high algorithm for computing $\bigodot$**
+**1. Prove the low-high algorithm for computing $\odot$**
 
-**Solution:**
+**Proof:**
 
-The low-high algorithm for computing $\bigodot$ is:
+We define that $a \% b$ is equal to  $a$ mod $b$.
+
+The low-high algorithm for computing $\odot$ is:
 
 $$ ab \% (2^n+1) = \begin{cases}ab \% 2^n -ab / 2^n &, ab \% 2^n \geq ab/ 2^n \\
 ab \% 2^n -ab / 2^n +2^n+1 &, ab \% 2^n < ab/2^n\\
@@ -30,10 +32,36 @@ Next, when $q+r \geq 2^n, ab/2^n = q+1, q+r-2^n = ab - (q+1)2^n, r = ab-(q+1)2^n
 
 That is, $r  = ab\%2^n - ab/2^n +2^n +1$
 
-So, we prove the low-high algorithm for computing $\bigodot$
+So, we prove the low-high algorithm for computing $\odot$
 
 **2. Prove that the In-structure in IDEA is an involution.**
 
-**Solution:**
+**Proof:**
 
+From the figure following we can see that the input of In-structure is $K_1,...K_4$, and the input of MA-structure is $a = K_1 \oplus K_3$ and $b = K_2 \oplus K_4$, and the output of MA-structure is $c$ and $d$.
+
+![MA](http://7xqbyn.com1.z0.glb.clouddn.com/MA.jpg)
+
+Then, we can see that after one In-structure operation, the output is:
+
+$$K_1' = K_1 \oplus d$$
+$$K_2' = K_2 \oplus c$$
+$$K_3' = K_3 \oplus d$$
+$$K_4' = K_4 \oplus c$$
+
+In the second round of In-structure operation, the input of the second MA-structure will be:
+
+$$a'=K_1' \oplus K_3' = K_1 \oplus d \oplus K_3 \oplus d = K_1 \oplus K_3$$
+$$b'=K_2 \oplus K_4$$
+
+So, the output of the second MA-structure is still $c$ and $d$.
+
+Therefore, the output of the second In-structure will be:
+
+$$K_1''=K_1' \oplus d = K_1 \oplus d \oplus d = K_1$$
+$$K_2'' = K_2$$
+$$K_3'' = K_3$$
+$$K_4'' = K_4$$
+
+So, we've proved that the In-structure is involution.
 
