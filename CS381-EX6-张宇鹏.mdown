@@ -31,18 +31,20 @@ So that the error occur in ciphertext block can only affect that plaintext block
 
 Yes，a pseudo-random number generator is a one-way function.
 
-Formally, pseudorandom generators exist if and only if one-way functions exist. That is $$PRNG \leftrightarrow OWF$$
+A distribution $D_n$ is considered pseudorandom if it is indistinguishable from the uniform distribution $U_n$. Formally, for any PPT (probabilistic polynomial time) algorithm $A$ and polynomial function $p(n)$:
 
-Consider a pseudorandom generator $Gl: \{0,1\}^l → \{0,1\}^{2l}$. Let's create the following one-way function $ƒ:  \{0,1\}^n → \{0,1\}^n$ that uses the first half of the output of $G_l$ as its output. Formally,
+$$|Pr_{x \in D_n} [A(x) = 1] − Pr_{x \in U_n} [A(x) = 1]| < 1/p(n)$$
+And a pseudorandom generator is a function $G : {0, 1}^l  \rightarrow {0, 1}^m$ where $l < m$ and
+1. $G$ can be computed in time polynomial in $l$,2. $G(x)$ is pseudorandom, where $x$ is uniformly distributed.
+A one-way function is a function $f : X  \rightarrow Y$ such that $f(x)$ can be computed in time polynomial in $|x|$, but for any polynomial randomized algorithm A that attempts to inverse $f$:
+$$Pr[f(A(f(x))) = f(x)] < 1/p(|x|)$$where $p(·)$ is any polynomial function.
 
-$$ƒ(x,y) → G_l(x)$$
+Suppose a pseudorandom number generator $G : {0,1}^l  \rightarrow {0,1}^m$ is not a one-way function.
+Then there exists a polynomial algorithm $A$ and $a$ constant $c$ such that:
+$$Pr[f(A(f(x))) = f(x)] \geq |x|−c$$
+Let $C$ be an algorithm that returns $1$ if $f(A(y)) = y$ and returns $0$ otherwise. Then: 
+$$Pr_{x \in U_l}[C(f(x)) = 1] \\= \sum_{y \in \{0,1\}^m} Pr_{x \in U_l} [f(x) = y]Pr[C(f(x)) = 1|f(x) = y] \\\geq \sum_{y \in \{0,1\}^m} 2^{−l}Pr[C(y) = 1] \\\geq \sum_{y \in \{0,1\}^m} 2·2^{−m}Pr[C(y)=1] \\= 2Pr_{y \in U_m}[C(y) = 1]$$Let $D_m$ denote the range of $f$.
 
-A key observation that justifies such selection, is that the image of the function is of size $2^n$ and is a negligible fraction of the pre-image universe of size $2^{2n}$.
+$$|Pr_{y \in D_m} [C(y) = 1] − Pr_{y \in U_m} [C(y) = 1]| \geq \frac{1}{2}|x|^{−c}$$
 
-To prove that $ƒ$ is indeed a one-way function let's construct an argument by contradiction. Assume there exists a circuit $C$ that inverts $ƒ$ with advantage ε:
-
-$$Prob[ƒ(C(ƒ(x,y)))  = ƒ(x,y)] > ε$$
-
-Then we can create the following algorithm that will distinguish $G_l$ from uniform, which contradicts the hypothesis. The algorithm would take an input of $2n$ bits $z$ and compute $(x,y) = C(z)$. If $G_l(x) = z$ the algorithm would accept, otherwise it rejects.
-
-Now, if $z$ is drawn from uniform distribution, the probability that the above algorithm accepts is $≤ 1/2l$, since the size of image is $1/2l$ of the size of the pre-image. However, if $z$ was drawn from the output of $G_l$ then the probability of acceptance is $> ε$ by assumption of the existence of circuit $C$. Therefore, the advantage that circuit $C$ has in distinguishing between the uniform $U$ and output of $G_l$ is $> ε − 1/2l$, which is non-negligible and thus contradicts our assumption of $G_l$ being a pseudorandom generator.
+Thus, $f$ is not a pseudorandom generator, which leads to a contradiction. Hence, a pseudorandom generator is a one-way function.

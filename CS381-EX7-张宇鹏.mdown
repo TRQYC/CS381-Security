@@ -1,0 +1,29 @@
+# CS381 Exercise 6
+
+**Name**: Zhang Yupeng
+
+**Student ID**: 5130309468
+
+**1. PayTV systems require that only the paid customers can watch the program, which of the 5 security services can be used to achieve this goal?**
+
+**Solution:**
+**2. Determine the complexity (number of arithmetic operations) of:**	
+1. **computing $gcd(a,b)$;**
+
+	**Solution:**
+
+
+2. **computing RSA encryption $C=M^e$ mod $n$**
+
+	**Solution:**
+
+
+**3. Limitation of raw RSA signature: Only when M has redundancy structure, can the signature be securely verified. Why?**
+
+**Solution:**
+**4. For RSA, it requires $|p-q|$ should not be small. Task: design an attack if $|p-q|$ is smaller than 10000.**
+
+**Solution:**
+**5. Show that in RSA, knowing $ф(n)$ is equivalent to knowing the factorization of $n$.**
+
+**Solution:**
