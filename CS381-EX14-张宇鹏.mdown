@@ -1,0 +1,19 @@
+# CS381 Exercise 14
+
+**Name**: Zhang Yupeng
+
+**Student ID**: 5130309468
+
+**1. HTTPS is generally secure, but we should pay attention to:**
+
+**1. When asked for password, look for the small lock icon.**
+
+**2. Verify that the URL is reasonable.**
+
+**3. Other browser issues.****What would happen if 1 , 2 are ignored?**
+
+**Solution:**
+
+If 1 is ignored, then when asked for password, the small lock icon maybe disappear, so that the link to the website maybe insecure and are not granted by HTTPS. So, our password may transfered to the server in a insecure path and thus be eavesdropped by the adversary.
+
+If 2 is ignored, then the website we access may be a falsified website or we maybe suffer from phishing, which the adversary pretend to be a trusted authentition and try to fraud us. When we ignore to verify the URL, we maybe mislead by the adversary to input our privacy information or password, thus we cannot keep our secret.

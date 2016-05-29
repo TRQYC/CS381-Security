@@ -1,0 +1,22 @@
+# CS381 Exercise 15
+
+**Name**: Zhang Yupeng
+
+**Student ID**: 5130309468
+
+**1. Draw the figures of IP-frame in transport mode:**
+
+**a) first ESP then AH**
+
+|Origin IP hdr| AH hdr |ESP hdr| TCP | Data|ESP Trailer|ESP Auth|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+**b) first AH then ESP**
+
+|Origin IP hdr| ESP hdr |AH hdr| TCP | Data|ESP Trailer|ESP Auth|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+**2. Describe the different VPNs and their usage****Solution:**
+
+1. Gateway-to-gateway: protects communications between two specific networks.
+2. Host-to-gateway:protects communications between a host and a specific network, typically used to allow hosts on unsecured networks, such as traveling user, to gain access to internal organizational services.
+3. Host-to-host: protects communication between two specific computers, often used when a user need to use or administer a remote system.
+4. SSL VPN: It can be used with a standard Web browser.It's used to give remote users with access to Web applications, client/ server applications and internal network connections.
