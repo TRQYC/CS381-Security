@@ -1,0 +1,30 @@
+# CS381 Exercise 19
+
+**Name**: Zhang Yupeng
+
+**Student ID**: 5130309468
+
+**1. Describe the methods of attacking passwords and protecting passwords.**
+
+**Solution:**
+
+To attack passwords, there're many methods including:
+
+1. Guessing: Restriction, weakwords, vault.
+2. Stealing: Keyloger, graphic, 
+3. Social engineering 
+4. Password cracking: Dictionary search.
+
+To pritecting passwords, there're many methods including:
+
+1. Restrict the login trials: CAPTCHA, locking.
+2. Education: teach users to use complex password.
+3. Managing Passwords: Reactive/proctive checking.
+4. Password Hashing
+**2. How to protect your passwords if there are undetected keystroke loggers in your system?**
+
+**Solution:**
+
+1. **Use a firewall:** a firewall is a great defense against keyloggers because it will monitor your computer’s activity more closely than you ever could. Upon detecting that a program is attempting to send data out, the firewall will ask for permission or display a warning.
+2. **Install a password manager:** One weakness of keyloggers is the fact that you can’t keylog what isn’t typed. That’s where automatic form filling becomes useful. If a password is filled in automatically by your PC, without any keystrokes, the password will only be susceptible to keyloggers the very first time you type it. A password manager can help us do that.
+3. **Change passwords frequently:** Changing your passwords frequently will help minimize the potential damage of a keylogging attack. Your password may be stolen, but it would be uncommon for it to be stolen and used immediately. If you change your password every two weeks, your stolen information will no longer be useful.
